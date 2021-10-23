@@ -6,10 +6,10 @@ volumes:
   productdb_vol:
   orderdb_vol:
 
-networks:
-  micro_network:
-    external:
-      name: micro_network
+#networks:
+#  micro_network:
+#    external:
+#      name: micro_network
 
 services:
   user-api:
@@ -20,8 +20,8 @@ services:
     - "5001:5001"
     depends_on:
       - user-db
-    networks:
-      - micro_network
+#    networks:
+#      - micro_network
     restart: always
 
   user-db:
@@ -34,8 +34,8 @@ services:
       MYSQL_DATABASE: user
       MYSQL_USER: cloudacademy
       MYSQL_PASSWORD: pfm_2020
-    networks:
-      - micro_network
+#    networks:
+#      - micro_network
     volumes:
     - userdb_vol:/var/lib/mysql
 
@@ -47,8 +47,8 @@ services:
     - "5002:5002"
     depends_on:
       - product-db
-    networks:
-      - micro_network
+#    networks:
+#      - micro_network
     restart: always
 
   product-db:
@@ -61,8 +61,8 @@ services:
       MYSQL_DATABASE: product
       MYSQL_USER: cloudacademy
       MYSQL_PASSWORD: pfm_2020
-    networks:
-      - micro_network
+#    networks:
+#      - micro_network
     volumes:
     - productdb_vol:/var/lib/mysql
 
@@ -74,8 +74,8 @@ services:
     - "5003:5003"
     depends_on:
       - order-db
-    networks:
-      - micro_network
+#    networks:
+#      - micro_network
     restart: always
 
   order-db:
@@ -88,8 +88,8 @@ services:
       MYSQL_DATABASE: order
       MYSQL_USER: cloudacademy
       MYSQL_PASSWORD: pfm_2020
-    networks:
-      - micro_network
+#    networks:
+#      - micro_network
     volumes:
     - orderdb_vol:/var/lib/mysql
 
@@ -99,6 +99,6 @@ services:
       context: .
     ports:
     - "5000:5000"
-    networks:
-      - micro_network
+#    networks:
+#      - micro_network
     restart: always
